@@ -30,6 +30,17 @@ app.use('/api/ai', aiRoutes);
 app.use('/api/profiles', profileRoutes); 
 app.use('/api/users-progress', progressRoutes); // FIX: Tambahkan endpoint progress
 
+app.get('/api/ping', async (req, res) => {
+    try {
+        // Query sangat ringan, hanya untuk mengetuk pintu Aiven
+        await db.query('SELECT 1'); 
+        res.status(200).send('Pynara Database Aman dan Melek! 🚀');
+    } catch (error) {
+        console.error("Ping Error:", error);
+        res.status(500).send('Database tidur atau error');
+    }
+});
+
 app.get('/', (req, res) => {
     res.send('Server Pynara Running...');
 });
