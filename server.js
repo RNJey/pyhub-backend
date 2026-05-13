@@ -6,6 +6,7 @@ import aiRoutes from './routes/aiRoutes.js';
 import profileRoutes from './routes/profileRoutes.js';
 import progressRoutes from './routes/progressRoutes.js';
 
+import db from './config/db.js';
 dotenv.config();
 
 const app = express();
